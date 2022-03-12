@@ -8,6 +8,8 @@ use std::{
   path::Path
 };
 
+use image::{imageops::{FilterType}, GenericImageView};
+
 #[tauri::command]
 fn writefile(contents: String, dir: String) {
   write(dir, contents).unwrap();
@@ -43,12 +45,13 @@ fn readdir(dir: String) -> Vec<String> {
 #[tauri::command]
 fn merge_images(images: Vec<String>, output_file: String) {
   let mut first = image::open(&Path::new(&images[0])).ok().expect("Opening image failed");
+  let (width, height) = first.dimensions();
 
   for image in &images {
     let img = image::open(&Path::new(&image)).ok().expect("Opening image failed");
     image::imageops::overlay(&mut first, &img, 0, 0);
   }
-  first.save(&output_file).unwrap()
+  first.resize(width * 4, height * 4, FilterType::Nearest).save(&output_file).unwrap()
 }
 
 fn main() {
