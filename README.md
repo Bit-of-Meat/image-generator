@@ -10,23 +10,31 @@
       
 <p align="center">
   <a href="#getting-started-%EF%B8%8F">Getting started</a> •
+  <a href="#develop-">Develop</a> •
   <a href="#credits-">Credits</a>
 </p>
 
 ---
 
 ## Getting started ☄️
-Download this repository via browser or clone it using git
-```
+### Prerequisites
+Follow tauri docs: https://tauri.studio/docs/getting-started/prerequisites
+
+### Installation
+1) Download this repository via browser or clone it using git
+``` bash
 git clone https://github.com/Bit-of-Meat/image-generator.git
 ```
-Run, to install all modules
-```
+2) Install all dependencies
+``` bash
 npm install
 ```
-Build project
-```
-npm run tauri build
+
+## Develop 📝
+### Main scripts
+``` bash
+npm run tauri dev # Starts app in development mode
+npm run tauri build # Build app
 ```
 
 ## Credits 💖
